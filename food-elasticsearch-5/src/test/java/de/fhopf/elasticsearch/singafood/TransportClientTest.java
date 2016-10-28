@@ -1,29 +1,20 @@
 package de.fhopf.elasticsearch.singafood;
 
-import org.elasticsearch.action.DocWriteResponse;
-import org.elasticsearch.action.DocWriteResponse.Result;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
-import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.common.xcontent.XContentBuilder;
-import org.elasticsearch.node.Node;
-import org.elasticsearch.node.NodeValidationException;
-import org.elasticsearch.node.internal.InternalSettingsPreparer;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 import static org.elasticsearch.action.DocWriteResponse.Result.CREATED;
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
@@ -33,12 +24,24 @@ import static org.junit.Assert.assertTrue;
 
 public class TransportClientTest {
 
-	@Test
-	public void indexAndSearchWithTransportClient() throws IOException {
+	private final String indexName = "singafood-" + System.currentTimeMillis();
+
+	@After
+	public void deleteIndex() {
+		createClient().admin().indices().prepareDelete(indexName);
+	}
+
+	private Client createClient() {
 		TransportAddress address = new InetSocketTransportAddress(new InetSocketAddress("localhost", 9300));
 		Settings settings = Settings.builder().put("cluster.name", "my-test-cluster").build();
 		Client transportClient = new PreBuiltTransportClient(settings)
 				.addTransportAddress(address);
+		return transportClient;
+	}
+
+	@Test
+	public void indexAndSearchWithTransportClient() throws IOException {
+		Client transportClient = createClient();
 		index(transportClient);
 		search(transportClient);
 	}
@@ -54,24 +57,24 @@ public class TransportClientTest {
 				.endObject()
 				.endObject();
 
-		IndexResponse response = client.prepareIndex("singafood", "dish")
+		IndexResponse response = client.prepareIndex(indexName, "dish")
 				.setSource(builder)
 				.execute()
 				.actionGet();
 
 		assertEquals(CREATED, response.getResult());
 
-		GetResponse getResponse = client.prepareGet("singafood", "dish", response.getId()).execute().actionGet();
+		GetResponse getResponse = client.prepareGet(indexName, "dish", response.getId()).execute().actionGet();
 
 		assertTrue(getResponse.isExists());
 		assertEquals("Roti Prata", getResponse.getSourceAsMap().get("food"));
 
-		client.admin().indices().prepareRefresh("singafood").execute().actionGet();
+		client.admin().indices().prepareRefresh(indexName).execute().actionGet();
 	}
 
 	private void search(Client client) {
 
-		SearchResponse searchResponse = client.prepareSearch("singafood")
+		SearchResponse searchResponse = client.prepareSearch(indexName)
 				.setTypes("dish")
 				.setQuery(matchQuery("food", "roti"))
 				.execute()
