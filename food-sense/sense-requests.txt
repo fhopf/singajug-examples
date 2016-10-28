@@ -1,0 +1,30 @@
+POST /food/dish
+{
+  "name": "Roti Prata",
+  "tags": ["vegetarian", "curry"],
+  "favorite": {
+    "name": "Tiong Bahru",
+    "location": "1.284811, 103.832321",
+    "price": 5.50
+  }
+}
+
+POST /food/dish
+{
+  "name": "Ayam penyet",
+  "tags": ["chicken", "indonesian"],
+  "favorite": {
+    "name": "Tiong Bahru",
+    "location": "1.284811, 103.832321",
+    "price": 6.50
+  }
+}
+
+POST /food/dish
+{
+  "name": "Laksa",
+  "tags": ["soup"],
+  "favorite": {
+    "name": "Somewhere"
+  }
+} 
