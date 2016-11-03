@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.lucene:lucene-spatial:5.4.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.lucene/lucene-spatial/5.4.1/68630557355cf7b4b0c51b210d6aec3d599ec43f/lucene-spatial-5.4.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.lucene/lucene-spatial/5.4.1/2cbde577aabd621d0b7056cf91a31c28448a1231/lucene-spatial-5.4.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -23,6 +23,10 @@
       <module name="food-elasticsearch-2_test" target="1.8" />
       <module name="food-elasticsearch-5_main" target="1.8" />
       <module name="food-elasticsearch-5_test" target="1.8" />
+      <module name="food-jest_main" target="1.8" />
+      <module name="food-jest_test" target="1.8" />
+      <module name="food-spring-data_main" target="1.8" />
+      <module name="food-spring-data_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -12,6 +12,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/food-elasticsearch-2" />
             <option value="$PROJECT_DIR$/food-elasticsearch-5" />
+            <option value="$PROJECT_DIR$/food-jest" />
+            <option value="$PROJECT_DIR$/food-spring-data" />
           </set>
         </option>
       </GradleProjectSettings>

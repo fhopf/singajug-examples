@@ -1,2 +1,4 @@
 include 'food-elasticsearch-2'
 include 'food-elasticsearch-5'
+include 'food-jest'
+include 'food-spring-data'
