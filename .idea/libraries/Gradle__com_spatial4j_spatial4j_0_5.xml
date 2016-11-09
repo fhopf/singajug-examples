@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: com.spatial4j:spatial4j:0.5">
-    <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/spatial4j/spatial4j/0.5/spatial4j-0.5.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
