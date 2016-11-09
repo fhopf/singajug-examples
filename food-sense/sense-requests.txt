@@ -1,13 +1,19 @@
 POST /food/dish
 {
-  "name": "Roti Prata",
+  "food": "Roti Prata",
   "tags": ["vegetarian", "curry"],
   "favorite": {
-    "name": "Tiong Bahru",
-    "location": "1.284811, 103.832321",
+    "location": "Tiong Bahru",
     "price": 5.50
   }
 }
+
+POST /food/dish
+{
+  "food": "Egg Prata",
+  "tags": ["bread", "curry", "egg"]
+}
+
 
 POST /food/dish
 {
@@ -15,7 +21,6 @@ POST /food/dish
   "tags": ["chicken", "indonesian"],
   "favorite": {
     "name": "Tiong Bahru",
-    "location": "1.284811, 103.832321",
     "price": 6.50
   }
 }
@@ -23,8 +28,5 @@ POST /food/dish
 POST /food/dish
 {
   "name": "Laksa",
-  "tags": ["soup"],
-  "favorite": {
-    "name": "Somewhere"
-  }
+  "tags": ["soup"]
 } 

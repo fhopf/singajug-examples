@@ -26,6 +26,10 @@ public class TransportClientTest {
 
 	private final String indexName = "singafood-" + System.currentTimeMillis();
 
+	Settings settings = Settings.builder()
+			.put("client.transport.sniff", true)
+			.build();
+
 	@After
 	public void deleteIndex() {
 		createClient().admin().indices().prepareDelete(indexName);

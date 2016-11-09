@@ -51,6 +51,13 @@ public class XMLConfigTest {
 
 		List<Dish> result = dishRepository.findByTagsAndFavoriteLocation("chicken", "Tian Tian");
 		assertEquals(1, result.size());
+
+		result = dishRepository.findByFavoritePriceLessThan(5.0);
+		assertEquals(1, result.size());
+
+		result = dishRepository.findByFavoritePriceLessThan(4.0);
+		assertEquals(0, result.size());
+
 	}
 
 	@After
